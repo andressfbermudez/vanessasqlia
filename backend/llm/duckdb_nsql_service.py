@@ -12,7 +12,7 @@ def duckdb_nsql_service(prompt: str, database_schema: str) -> str:
     try:
         result = ollama.generate(
             model='duckdb-nsql',
-            system=f'Esquema de mi base de datos: {database_schema}, utiliza sintaxis para MySQL',
+            system=f'Mi base de datos se llama development_db, este es su esquema: {database_schema}, utiliza sintaxis para MySQL',
             prompt=prompt
         )
         return result.response
