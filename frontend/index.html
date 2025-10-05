@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="andresfbermudez">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="andresfbermudez">
+    <title>Vanessa IA</title>
+    <link rel="icon" href="/frontend/images/bot.png" type="image/x-icon">
+    <link rel="stylesheet" href="/frontend/style.css">
+</head>
+
+<body>
+    <div class="chat_ia">
+        <header>
+            <div class="bot_image" title="Nuevo chat con Vanessa">
+                <img src="/frontend/images/bot.png" alt="bot">
+            </div>
+        </header>
+
+        <div class="welcome_msg" id="welcome_msg">
+            <p>Hola, soy Vanessa, tu asistente IA. ¿En qué puedo ayudarte hoy?</p>
+        </div>
+
+        <div id="response"></div>
+
+        <div class="prompt">
+            <textarea id="promptInput" placeholder="Escribe tu pregunta aquí..."></textarea>
+            <button id="sendBtn">Enviar</button>
+        </div>
+    </div>
+
+    <script src="/frontend/script.js" defer></script>
+</body>
+
+</html>
