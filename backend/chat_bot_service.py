@@ -14,7 +14,13 @@ def process_prompt_service(prompt, database):
     query = duckdb_nsql_service(prompt, database_schema)
 
     # Ejecutar la query generada por el modelo de IA (Solo se permiten SELECT)
-    if query.strip().upper().startswith("SELECT"):
+    normalize_query = query.strip().upper().split()[0]
+    if normalize_query in [
+        "SELECT","SHOW", "DESCRIBE",
+        "CREATE", "INSERT",
+        "UPDATE", "ALTER",
+        "DELETE", "DROP", "TRUNCATE"
+    ]:
         response = execute_query_service(query.strip(), database)
         print("PROMPT:", prompt, " - ", "SQL:", query)
         return response
@@ -48,15 +54,25 @@ def get_database_schema(engine) -> str:
 # Ejecutar la query
 def execute_query_service(sql_query, database):
     try:
+        # Ejecutar la query
         result = database.execute(text(sql_query))
-        rows = []
+        database.commit()
 
-        for row in result:
-            row_dict = {key: str(value) if value is not None else "" for key, value in row._mapping.items()}
-            rows.append(row_dict)
+        # Normalizar la query para determinar que tipo de operacion se realizo.
+        normalized_query = sql_query.strip().upper()
+        first_word = normalized_query.split()[0]
 
-        return rows
+        # Determinar el tipo de respuesta segun el tipo de operacion ejecutada
+        if first_word == "SELECT" or first_word == "SHOW" or first_word == "DESCRIBE":
+            rows = [
+                {key: str(value) if value is not None else "" for key, value in row._mapping.items()}
+                for row in result
+            ]
+            return rows
+        else:
+            return "Operacion completada correctamente."
 
+    # Capturar errores
     except Exception as e:
         print(f"Error al ejecutar la consulta SQL: {e}")
-        return []
+        return "Error en el servidor al realizar la operacion sobre la base de datos."

@@ -34,13 +34,13 @@ async function sendPrompt() {
     // Mensaje del usuario
     const userMsg = document.createElement("div");
     userMsg.textContent = "Tú: " + prompt;
-    userMsg.style.color = "#60a5fa";
+    userMsg.style.color = "#00b209ff";
     userMsg.style.marginBottom = "6px";
     exchange.appendChild(userMsg);
 
     // Mensaje "pensando"
     const thinkingMsg = document.createElement("div");
-    thinkingMsg.textContent = "Vanessa IA: Pensando...";
+    thinkingMsg.textContent = "Vanessa IA: Estoy analizando tu pregunta, para darte la mejor respuesta...";
     thinkingMsg.style.color = "#9ca3af";
     exchange.appendChild(thinkingMsg);
 

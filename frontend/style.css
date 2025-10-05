@@ -62,8 +62,8 @@ body {
     background: #111827;
     padding: 15px;
     border-radius: 10px;
-    width: 90%;
-    max-width: 1200px;
+    width: auto;
+    max-width: 90%;
     text-align: left;
     font-size: 15px;
     line-height: 1.5;

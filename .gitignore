@@ -1,0 +1,32 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Entornos Jupyter / IPython
+.ipynb_checkpoints
+
+# Archivos de configuración
+*.env
+*.ini
+*.cfg
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
